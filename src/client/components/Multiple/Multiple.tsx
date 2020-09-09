@@ -3,53 +3,52 @@ import { useForm } from 'react-hook-form';
 
 interface Multiple {
   question: string,
-  correctAnswer: string,
-  answers: string[]
+  answers: string[],
+  handleSelectedAnswer: (event: any) => void;
 }
 
 export const Multiple: React.FC<Multiple> = (props) => {
 
   const [question, setQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState(['']);
 
   const { register, handleSubmit, errors } = useForm();
 
+  const tempQuestion = 'Which company did Valve cooperate with in the creation of the Vive?';
+
+  const tempAnswers = ["HTC",  "Oculus", "Google", "Razer"];
+
+  const tempCorrectAnswer = "HTC";
+
+
   useEffect(() => {
-    setQuestion(props.question);
-    setCorrectAnswer(props.correctAnswer);
+    console.log('PROPS', props);
+    // setQuestion(props.question);
+    // setCorrectAnswer(props.correctAnswer);
     // setAnswers(props.answers);
 
-  }, [question, correctAnswer, answers]);
+    setQuestion(tempQuestion);
+    setCorrectAnswer(tempCorrectAnswer);
+    setAnswers(tempAnswers);
 
-  let correct = false;
+  }, []);
 
   const onSubmit = (event: any) => {
-    if (event.answer === correctAnswer) {
-      correct = true;
-    }
-    // send correct = true/false up as event
+    props.handleSelectedAnswer(event.answer);
   };
 
   return (
     <div className="multiple">
-      <div className="question">{JSON.stringify(props)}</div>
+      <div className="question">{question}</div>
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
-        <label className="option">
-        <input className="radio" type="radio" value="0" name="answer" ref={register({ required: true })}/>
-        Rad Mobile
-        </label>
-        <label className="option">
-        <input className="radio"  type="radio" value="1" name="answer" ref={register({ required: true })}/>
-        Sonic The Hedgehog</label>
-        <label className="option">
-        <input className="radio" type="radio" value="2" name="answer" ref={register({ required: true })}/>
-        Super Mario 64
-        </label>
-        <label className="option">
-        <input className="radio"  type="radio" value="3" name="answer"
-        ref={register({ required: true })}/>
-        Mega Man</label>
+        {
+          answers.map((answer, index) => {
+          return (
+            <label className="option" key={index}><input className="radio" type="radio" value={answer} name="answer" ref={register({ required: true })}/>{answer}</label>
+          );
+          })
+        }
         <div className="error">
           {errors.answer && "ERROR: Selection is required"}
           </div>
