@@ -42,16 +42,16 @@ export const Boolean: React.FC<Bool> = (props) => {
       <div className="question">{question}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
+        <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
         <label className={`option ${correctAnswer === 'True' ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`}>
         <input className="radio" type="radio" value="true" name="answer" ref={register({ required: true })} />
         True
         </label>
         <label className={`option ${correctAnswer === 'False' ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`}>
         <input className="radio"  type="radio" value="false" name="answer" ref={register({ required: true })}/>
-        False</label>
-        <div className="error">
-          {errors.answer && "ERROR: Selection is required"}
-          </div>
+        False</label>        
+        {errors.answer && <div className="error">ERROR: Selection is required</div>}
+        </div>
         <button className="button" type="submit"><span className="button-text">Next</span></button>
       </form>
     </div>

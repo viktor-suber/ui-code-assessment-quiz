@@ -111,6 +111,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   flex-direction: column;
 }
 
+.answer-list {
+  margin-bottom: 18px;
+}
+
+.answer-list.answer-error {
+  margin-bottom: 9px;
+}
+
 .option {
   display: flex;
   flex-direction: row;

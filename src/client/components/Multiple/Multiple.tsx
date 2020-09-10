@@ -56,6 +56,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
       <div className="question">{question}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
+      <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
         {
           answers.map((answer, index) => {
           return (
@@ -63,9 +64,8 @@ export const Multiple: React.FC<Multiple> = (props) => {
           );
           })
         }
-        <div className="error">
-          {errors.answer && "ERROR: Selection is required"}
-          </div>
+        {errors.answer && <div className="error">ERROR: Selection is required</div>}
+        </div>
         <button className="button" type="submit"><span className="button-text">Next</span></button>
       </form>
     </div>

@@ -23,22 +23,22 @@ export const Quiz: React.FC<Props> = (props) => {
     const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
-        // Check to see if limit for each type of question is met
-        const types = [];
+        // // Check to see if limit for each type of question is met
+        // const types = [];
 
-        if (booleanCount < 2) {
-            types.push('boolean')
-        }
-        if (textCount > 1) {
-            types.push('text');
-        } if (multipleCount > 9) {
-            types.push('multiple');
-        }
+        // if (booleanCount < 2) {
+        //     types.push('boolean')
+        // }
+        // if (textCount > 1) {
+        //     types.push('text');
+        // } if (multipleCount > 9) {
+        //     types.push('multiple');
+        // }
 
-        // Randomly determine which type of question to select
-        setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
+        // // Randomly determine which type of question to select
+        // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('text');
+        setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
