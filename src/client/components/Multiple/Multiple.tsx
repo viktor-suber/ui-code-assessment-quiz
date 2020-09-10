@@ -23,7 +23,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
     setQuestion(props.question);
     setCorrectAnswer(props.correctAnswer);
     setAnswers(props.answers);
-  }, [props, questionSubmitted]);
+  }, [props]);
 
   const onSubmit = (event: any) => {
 

@@ -18,20 +18,22 @@ export const Quiz: React.FC<Props> = (props) => {
     const [multipleCount, setMultipleCount] = useState(0);
 
     const [currentQuestionObject, setCurrentQuestionObject] = useState({question: '', correctAnswer: '', answers: []});
+    const [lastQuestionType, setLastQuestionType] = useState('');
 
     const [scoreData, setScoreData] = useState({correct: 0, wrong: 0});
     const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
+        console.log('LAST QUESTION TYPE', lastQuestionType);
         // Check to see if limit for each type of question is met
         const types = [];
 
-        if (booleanCount < 2) {
+        if (booleanCount < 1) {
             types.push('boolean')
         }
         if (textCount < 1) {
             types.push('text');
-        } if (multipleCount < 9) {
+        } if (multipleCount < 1) {
             types.push('multiple');
         }
 
@@ -105,6 +107,8 @@ export const Quiz: React.FC<Props> = (props) => {
               setMultipleCount(multipleCount + 1);
               console.log('MULTIPLE COUNT', multipleCount);
             }
+
+            setLastQuestionType(currentQuestionType);
 
             //check if there are questions left
             if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
