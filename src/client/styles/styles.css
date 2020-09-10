@@ -27,14 +27,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   align-items: center;
 }
 
+.quiz-container {
+  width: 800px;
+  margin-top: -11%;
+}
 
 .header {
   font-size: 45px;
-  width: 75%;
+  /* width: 75%; */
   padding: 20px;
   padding-top: 0px;
-  margin-top: -17%;
-  margin-left: -23%;
+
   font-weight: bold;
   text-shadow: 3px 3px #222428;
 }
@@ -45,6 +48,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   padding: 25px;
   border-radius: 20px;
   box-shadow: 6px 6px #222428;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.questions {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .button {
