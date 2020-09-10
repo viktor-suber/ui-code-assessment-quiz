@@ -138,6 +138,25 @@ label:hover {
   padding-left: 0px;
 }
 
+.correct-indicator {
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.correct-message {
+  color: #6ac200;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.incorrect-message {
+  color: #ff2600;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
 .correct.submitted {
    background-color: #daffad;
    color: #283715;
