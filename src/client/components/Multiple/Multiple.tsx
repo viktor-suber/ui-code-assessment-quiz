@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 interface Multiple {
   question: string,
   answers: string[],
+  correctAnswer: string,
   handleSelectedAnswer: (event: any) => void;
 }
 
@@ -12,6 +13,8 @@ export const Multiple: React.FC<Multiple> = (props) => {
   const [question, setQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [answers, setAnswers] = useState(['']);
+  const [questionSubmitted, setQuestionSubmitted] = useState(false);
+  const [answerIsCorrect, setAnswerisCorrect] = useState(false);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -35,17 +38,22 @@ export const Multiple: React.FC<Multiple> = (props) => {
   }, []);
 
   const onSubmit = (event: any) => {
+    if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
+      setAnswerisCorrect(true);
+    }
+    setQuestionSubmitted(true);
     props.handleSelectedAnswer(event.answer);
   };
 
   return (
     <div className="multiple">
       <div className="question">{question}</div>
+      {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
         {
           answers.map((answer, index) => {
           return (
-            <label className="option" key={index}><input className="radio" type="radio" value={answer} name="answer" ref={register({ required: true })}/>{answer}</label>
+            <label className={`option ${correctAnswer === answer ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`} key={index}><input className="radio" type="radio" value={answer} name="answer" ref={register({ required: true })}/>{answer}</label>
           );
           })
         }

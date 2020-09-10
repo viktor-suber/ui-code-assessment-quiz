@@ -90,10 +90,9 @@ export const Quiz: React.FC<Props> = (props) => {
     const handleSelectedAnswer = (event: any) => {
         let newScoreData = scoreData;
 
-        (event === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
+        (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
 
         setScoreData(newScoreData);
-        
 
         const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
         console.log('ANSWER IS CORRECT', correct);
@@ -108,11 +107,11 @@ export const Quiz: React.FC<Props> = (props) => {
     <div className="questions">
         {/* {JSON.stringify(currentQuestionObject.question)} */}
         {currentQuestionType === 'boolean' && 
-        <Boolean question={currentQuestionObject.question}handleSelectedAnswer={handleSelectedAnswer} />}
+        <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
-        <TextQuestion question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} />}
+        <TextQuestion question={currentQuestionObject.question} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
-        <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} handleSelectedAnswer={handleSelectedAnswer}/>}
+        <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer}/>}
         {/* <Summary scoreData={scoreData} /> */}
     </div>
     );

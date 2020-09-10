@@ -50,7 +50,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 }
 
 .quiz-container {
-  margin-top: -9%;
+  margin-top: -5%;
 }
 
 .header {
@@ -69,7 +69,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   padding: 25px;
   border-radius: 20px;
   box-shadow: 6px 6px #222428;
-  height: 270px;
+  height: 325px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,15 +114,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 .option {
   display: flex;
   flex-direction: row;
+  margin-bottom: 7px;
 }
 
 label {
   padding: 9px;
   padding-left: 0px;
+  border-radius: 5px;
 }
 
 label:hover {
   background-color: #E5EEFF;
+}
+
+.no-hover:hover {
+  background-color: #FFFFFF;
 }
 
 .radio {
@@ -130,10 +136,40 @@ label:hover {
 }
 
 .error {
-  color: #ff0000;
+  color: #ff2600;
   font-size: 14px;
   padding: 9px;
   padding-left: 0px;
+}
+
+.correct-indicator {
+  font-size: 12px;
+  margin-bottom: 18px;
+  color: #5c5e66;
+}
+
+.correct-message {
+  color: #6ac200;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.incorrect-message {
+  color: #ff2600;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.correct.submitted {
+   background-color: #daffad;
+   color: #283715;
+}
+
+.incorrect.submitted {
+  background-color: #ffbbad;
+  color: #662114;
 }
 
 .summary-header {
