@@ -5,6 +5,7 @@ $error-text: #ff2600;
 
 html {
   background-color: $shadow;
+  color: #000000;
   height: 100%;
   background: -moz-radial-gradient(center, ellipse cover, $light 0%, $primary-blue 65%, #383c42 98%, $shadow 100%); /* FF3.6-15 */
   background: -webkit-radial-gradient(center, ellipse cover, $light 0%,$primary-blue 65%,#383c42 98%, $shadow 100%); /* Chrome10-25,Safari5.1-6 */
@@ -58,6 +59,7 @@ html {
   padding-top: 0px;
   font-weight: bold;
   text-shadow: 3px 3px $shadow;
+  color: #FFFFFF;
 }
 
 .quiz {
