@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Multiple } from '../../components/Multiple/Multiple';
-import { Boolean } from '../../components/Boolean/Boolean';
-import { TextQuestion } from '../../components/TextQuestion/TextQuestion';
-import { Summary } from '../../components/Summary/Summary';
+import { Multiple } from '../components/Multiple';
+import { Boolean } from '../components/Boolean';
+import { TextQuestion } from '../components/TextQuestion';
+import { Summary } from '../components/Summary';
 
 interface Props {
     bool: Array<any>,

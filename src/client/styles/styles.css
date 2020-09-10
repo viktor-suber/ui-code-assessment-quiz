@@ -44,6 +44,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 }
 
 @media only screen and (min-width: 992px) {
+  .button {
+    width: 25%;
+  }
   .quiz-container {
     width: 800px;
   }
@@ -84,7 +87,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   font-size: 14px;
   padding: 10px;
   border: 0px;
-  width: 25%;
   transition: background-color 0.45s ease, color 0.45s ease;
 }
 

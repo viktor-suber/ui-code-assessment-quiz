@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles/styles.css';
-import { Quiz } from './modules/Quiz/Quiz';
+import { Quiz } from './modules/Quiz';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
