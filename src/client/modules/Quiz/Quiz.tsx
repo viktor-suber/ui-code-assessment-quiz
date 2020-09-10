@@ -39,7 +39,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // Randomly determine which type of question to select
         setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('multiple');
+        // setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -85,26 +85,19 @@ export const Quiz: React.FC<Props> = (props) => {
             (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
     
             setScoreData(newScoreData);
-    
-            // const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
-            // console.log('ANSWER IS CORRECT', correct);
-    
-            // console.log('SCORE DATA', scoreData);
+
         } else {
             // add to count
             
             switch(currentQuestionType) {
               case 'boolean':
               setBooleanCount(booleanCount + 1);
-              console.log('BOOL COUNT', booleanCount);
               break;
               case 'text': 
               setTextCount(textCount + 1);
-              console.log('TEXT COUNT', textCount);
               break;
               case 'multiple':
               setMultipleCount(multipleCount + 1);
-              console.log('MULTIPLE COUNT', multipleCount);
             }
 
             setLastQuestionType(currentQuestionType);
@@ -113,6 +106,7 @@ export const Quiz: React.FC<Props> = (props) => {
             if (booleanCount === 2 && textCount === 1) {
               setQuizEnd(true);
             }
+
             //change to next question if questions are left
 
         }

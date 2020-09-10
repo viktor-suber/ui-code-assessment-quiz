@@ -20,10 +20,29 @@ export const Multiple: React.FC<Multiple> = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   useEffect(() => {
-    setQuestion(props.question);
-    setCorrectAnswer(props.correctAnswer);
-    setAnswers(props.answers);
+    const newQuestion = fixUnicode(props.question);
+    setQuestion(newQuestion);
+    const newCorrectAnswer = fixUnicode(props.correctAnswer);
+    setCorrectAnswer(newCorrectAnswer);
+    const newAnswers: string[] = [];
+    if (props.answers) {
+      props.answers.forEach(answer => {
+        newAnswers.push(fixUnicode(answer));
+      });
+    }
+    setAnswers(newAnswers);
   }, [props]);
+
+
+  const fixUnicode = (string: any) => {
+    if (!string) {
+      return null;
+    }
+    return string.replace(/&quot;/g, '"')
+    .replace(/no-scope&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&amp;/g, '&');
+  };
 
   const onSubmit = (event: any) => {
 

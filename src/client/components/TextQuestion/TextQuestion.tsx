@@ -18,9 +18,21 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
   const [submittedOnce, setSubmittedOnce] = useState(false);
 
   useEffect(() => {
-    setQuestion(props.question);
+    const newQuestion = fixUnicode(props.question);
+    setQuestion(newQuestion);
     setCorrectAnswer(props.correctAnswer);
-  }, [props, questionSubmitted]);
+  }, [props, question, questionSubmitted]);
+
+  const fixUnicode = (string: any) => {
+    if (!string) {
+      return null;
+    }
+    return string.replace(/&quot;/g, '"')
+    .replace(/no-scope&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&amp;/g, '&');
+  };
+
 
   const onSubmit = (event: any) => {
 
