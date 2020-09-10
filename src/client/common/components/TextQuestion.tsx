@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { fixUnicode } from '../methods/fixUnicode';
+import { fixUnicode } from '../methods';
 import { TextInterface } from '../interfaces';
 
 export const TextQuestion: React.FC<TextInterface> = (props) => {

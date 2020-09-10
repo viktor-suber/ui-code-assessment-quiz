@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
-const data = require('./data.json');
+const data = require("./data.json");
 
 // create server
 const server = express();
@@ -16,39 +16,41 @@ const shuffle = (data) => {
 };
 
 const modifyData = (data) => {
-    // Sort questions by type
-    let newData = data.reduce((seed, current) => {
-        if (!seed[current.type]) {
-            seed[current.type] = [];
-        }
-        seed[current.type].push(current);
-    return seed;
-    }, {});
-
-    // Shuffle each array of questions
-
-    for (let key in newData) {
-      if (newData[key]) {
-        newData[key] = shuffle(newData[key]);
-      }
+  // Sort questions by type
+  let newData = data.reduce((seed, current) => {
+    if (!seed[current.type]) {
+      seed[current.type] = [];
     }
+    seed[current.type].push(current);
+    return seed;
+  }, {});
 
-    // Consolidate all multiple choice questions into one array and randomize placement of correct answer
+  // Shuffle each array of questions
 
-    newData.multiple.forEach(question => {
-        question.answers = shuffle(question.incorrect_answers.concat(question.correct_answer));
-      });
+  for (let key in newData) {
+    if (newData[key]) {
+      newData[key] = shuffle(newData[key]);
+    }
+  }
 
-    return newData;
-}
+  // Consolidate all multiple choice questions into one array and randomize placement of correct answer
+
+  newData.multiple.forEach((question) => {
+    question.answers = shuffle(
+      question.incorrect_answers.concat(question.correct_answer)
+    );
+  });
+
+  return newData;
+};
 
 // GET question endpoint
 server.get("/api/questions", cors(), (req, res) => {
-    // Randomize question order before using modifyData()
-    res.json(modifyData(shuffle(data.results)));
+  // Randomize question order before using modifyData()
+  res.json(modifyData(shuffle(data.results)));
 });
 
 // starting server
 server.listen(port, () => {
-    console.log(`Server listening at ${port}`);
+  console.log(`Server listening at ${port}`);
 });

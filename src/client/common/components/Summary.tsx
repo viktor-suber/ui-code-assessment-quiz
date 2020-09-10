@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { SummaryInterface } from '../interfaces';
+import React, { useState, useEffect } from "react";
+import { SummaryInterface } from "../interfaces";
 
 export const Summary: React.FC<SummaryInterface> = (props: any) => {
-
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
@@ -21,12 +20,20 @@ export const Summary: React.FC<SummaryInterface> = (props: any) => {
   return (
     <div className="summary">
       <div className="summary-header">SUMMARY</div>
-        <ul className="summary-list">
-          <li>Correct: <b>{correct}</b></li>
-          <li>Wrong: <b>{wrong}</b></li>
-          <li>Questions Answered: <b>{questionsAnswered}</b></li>
-          <li>Final Score: <b>{finalScore}%</b></li>
-        </ul>
-      </div>
+      <ul className="summary-list">
+        <li>
+          Correct: <b>{correct}</b>
+        </li>
+        <li>
+          Wrong: <b>{wrong}</b>
+        </li>
+        <li>
+          Questions Answered: <b>{questionsAnswered}</b>
+        </li>
+        <li>
+          Final Score: <b>{finalScore}%</b>
+        </li>
+      </ul>
+    </div>
   );
 };

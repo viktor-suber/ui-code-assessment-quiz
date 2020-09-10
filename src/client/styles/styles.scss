@@ -1,21 +1,41 @@
 $primary-blue: #1e70dd;
 $shadow: #222428;
-$light: #E5EEFF;
+$light: #e5eeff;
 $error-text: #ff2600;
 
 html {
   background-color: $shadow;
   color: #000000;
   height: 100%;
-  background: -moz-radial-gradient(center, ellipse cover, $light 0%, $primary-blue 65%, #383c42 98%, $shadow 100%); /* FF3.6-15 */
-  background: -webkit-radial-gradient(center, ellipse cover, $light 0%,$primary-blue 65%,#383c42 98%, $shadow 100%); /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(ellipse at center, $light 0%,$primary-blue 65%,#383c42 98%, $shadow 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    $light 0%,
+    $primary-blue 65%,
+    #383c42 98%,
+    $shadow 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    $light 0%,
+    $primary-blue 65%,
+    #383c42 98%,
+    $shadow 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    $light 0%,
+    $primary-blue 65%,
+    #383c42 98%,
+    $shadow 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', endColorstr='#383c42',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: arial;
   display: flex;
   justify-content: center;
@@ -59,11 +79,11 @@ html {
   padding-top: 0px;
   font-weight: bold;
   text-shadow: 3px 3px $shadow;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .quiz {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
   padding: 25px;
   border-radius: 20px;
@@ -140,7 +160,7 @@ label:hover {
 }
 
 .no-hover:hover {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .radio {
@@ -180,8 +200,8 @@ label:hover {
 }
 
 .correct.submitted {
-   background-color: #daffad;
-   color: #283715;
+  background-color: #daffad;
+  color: #283715;
 }
 
 .incorrect.submitted {
