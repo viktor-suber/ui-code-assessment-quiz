@@ -20,7 +20,7 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
   useEffect(() => {
     setQuestion(props.question);
     setCorrectAnswer(props.correctAnswer);
-  }, [props]);
+  }, [props, questionSubmitted]);
 
   const onSubmit = (event: any) => {
 

@@ -20,7 +20,7 @@ export const Boolean: React.FC<Bool> = (props) => {
   useEffect(() => {
     setQuestion(props.question);
     setCorrectAnswer(props.correctAnswer);
-  }, [props]);
+  }, [props, questionSubmitted]);
 
   // const answerClassTrue = classNames('option', )
 
