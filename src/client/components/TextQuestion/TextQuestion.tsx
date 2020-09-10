@@ -40,11 +40,11 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
       <div className="question">{question}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className="no-hover">
+      <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
+        <label className={`option no-hover`}>
           <input type="text" name="answer" ref={register({required: true})}/>
         </label>
-        <div className="error">
-          {errors.answer && "ERROR: Blank answers are not valid"}
+        {errors.answer && <div className="error">ERROR: Blank fields not valid</div>}
           </div>
           <button className="button" type="submit"><span className="button-text">Next</span></button>
       </form>

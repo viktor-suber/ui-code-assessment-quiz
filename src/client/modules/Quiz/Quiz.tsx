@@ -38,7 +38,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // // Randomly determine which type of question to select
         // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        setCurrentQuestionType('multiple');
+        setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
