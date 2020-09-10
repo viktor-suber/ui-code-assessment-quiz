@@ -19,17 +19,38 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   align-items: center;
 }
 
-
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .quiz-container {
+    width: 308px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .quiz-container {
+    width: 408px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .quiz-container {
+    width: 576px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .quiz-container {
+    width: 800px;
+  }
+}
+
 .quiz-container {
-  width: 800px;
-  margin-top: -11%;
+  margin-top: -9%;
 }
 
 .header {
