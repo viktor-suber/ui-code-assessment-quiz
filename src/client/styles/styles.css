@@ -143,6 +143,10 @@ label:hover {
   margin-right: 10px;
 }
 
+.text-input {
+  height: 20px;
+}
+
 .error {
   color: #ff2600;
   font-size: 14px;

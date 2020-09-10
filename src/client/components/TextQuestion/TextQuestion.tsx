@@ -42,7 +42,7 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
       <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
         <label className={`option no-hover`}>
-          <input type="text" name="answer" ref={register({required: true})}/>
+          <input type="text" className="text-input" name="answer" ref={register({required: true})}/>
         </label>
         {errors.answer && <div className="error">ERROR: Blank fields not valid</div>}
           </div>
