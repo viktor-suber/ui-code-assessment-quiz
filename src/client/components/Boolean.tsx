@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
-interface Bool {
-  question: string;
-  correctAnswer: string;
-  handleSelectedAnswer: (event: any, selectedAnswer: boolean) => void;
-}
+import { Bool } from '../common/interfaces/boolInterface';
 
 export const Boolean: React.FC<Bool> = (props) => {
 

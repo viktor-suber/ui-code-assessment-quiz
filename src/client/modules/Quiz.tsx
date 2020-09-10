@@ -11,10 +11,8 @@ export const Quiz: React.FC<Props> = (props) => {
     const [booleanCount, setBooleanCount] = useState(0);
     const [textCount, setTextCount] = useState(0);
     const [multipleCount, setMultipleCount] = useState(0);
-
     const [currentQuestionObject, setCurrentQuestionObject] = useState({question: '', correctAnswer: '', answers: []});
     const [lastQuestionType, setLastQuestionType] = useState('');
-
     const [scoreData, setScoreData] = useState({correct: 0, wrong: 0});
     const [quizEnd, setQuizEnd] = useState(false);
 
@@ -34,7 +32,6 @@ export const Quiz: React.FC<Props> = (props) => {
         // Randomly determine which type of question to select
         setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -46,8 +43,6 @@ export const Quiz: React.FC<Props> = (props) => {
           };
 
           setCurrentQuestionObject(questionObject);
-
-          // remove that question from object
 
         } if (currentQuestionType === 'text') {
 
@@ -74,6 +69,7 @@ export const Quiz: React.FC<Props> = (props) => {
     }, [props, booleanCount, textCount, multipleCount, currentQuestionType, lastQuestionType]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
+        // Display the score data before moving to next question
         if (!submittedOnce) {
             let newScoreData = scoreData;
 
@@ -82,7 +78,7 @@ export const Quiz: React.FC<Props> = (props) => {
             setScoreData(newScoreData);
 
         } else {
-            // add to count
+            // Add to count
             
             switch(currentQuestionType) {
               case 'boolean':
@@ -95,14 +91,13 @@ export const Quiz: React.FC<Props> = (props) => {
               setMultipleCount(multipleCount + 1);
             }
 
+            // Save the last question type to obtain a unique question type each time
             setLastQuestionType(currentQuestionType);
 
-            //check if there are questions left
+            // Check if there are questions left
             if (booleanCount === 2 && textCount === 1) {
               setQuizEnd(true);
             }
-
-            //change to next question if questions are left
 
         }
 
