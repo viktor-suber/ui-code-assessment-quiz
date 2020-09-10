@@ -3,12 +3,7 @@ import { Multiple } from '../components/Multiple';
 import { Boolean } from '../components/Boolean';
 import { TextQuestion } from '../components/TextQuestion';
 import { Summary } from '../components/Summary';
-
-interface Props {
-    bool: Array<any>,
-    multiple: Array<any>,
-    text: Array<any>
-}
+import { Props } from '../common/interfaces/propsInterface';
 
 export const Quiz: React.FC<Props> = (props) => {
 
