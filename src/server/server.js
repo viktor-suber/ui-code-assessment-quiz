@@ -25,13 +25,19 @@ const modifyData = (data) => {
     return seed;
     }, {});
 
+    // Shuffle each array of questions
+
+    for (let key in newData) {
+      if (newData[key]) {
+        newData[key] = shuffle(newData[key]);
+      }
+    }
+
     // Consolidate all multiple choice questions into one array and randomize placement of correct answer
 
     newData.multiple.forEach(question => {
         question.answers = shuffle(question.incorrect_answers.concat(question.correct_answer));
       });
-
-      // TODO: boolean cutoff
 
     return newData;
 }

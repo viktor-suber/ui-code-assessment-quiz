@@ -33,7 +33,6 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
     .replace(/&amp;/g, '&');
   };
 
-
   const onSubmit = (event: any) => {
 
     if (!submittedOnce) {
