@@ -1,5 +1,5 @@
 export interface Props {
-  bool: Array<any>,
-  multiple: Array<any>,
-  text: Array<any>
+  bool: Array<any>;
+  multiple: Array<any>;
+  text: Array<any>;
 }

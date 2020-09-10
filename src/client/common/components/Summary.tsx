@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 interface Summary {
   scoreData: {
-    correct: number,
-    wrong: number
+    correct: number;
+    wrong: number;
   }
 }
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Multiple } from '../components/Multiple';
-import { Boolean } from '../components/Boolean';
-import { TextQuestion } from '../components/TextQuestion';
-import { Summary } from '../components/Summary';
+import { Multiple } from '../common/components/Multiple';
+import { Boolean } from '../common/components/Boolean';
+import { TextQuestion } from '../common/components/TextQuestion';
+import { Summary } from '../common/components/Summary';
 import { Props } from '../common/interfaces/propsInterface';
 
 export const Quiz: React.FC<Props> = (props) => {
@@ -17,22 +17,20 @@ export const Quiz: React.FC<Props> = (props) => {
     const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
-        // // Check to see if limit for each type of question is met
-        // const types = [];
+        // Check to see if limit for each type of question is met
+        const types = [];
 
-        // if ((booleanCount < 2) && lastQuestionType !== 'boolean') {
-        //     types.push('boolean');
-        // }
-        // if ((textCount < 1) && lastQuestionType !== 'text') {
-        //     types.push('text');
-        // } if ((multipleCount < 9) && lastQuestionType !== 'multiple') {
-        //     types.push('multiple');
-        // }
+        if ((booleanCount < 2) && lastQuestionType !== 'boolean') {
+            types.push('boolean');
+        }
+        if ((textCount < 1) && lastQuestionType !== 'text') {
+            types.push('text');
+        } if ((multipleCount < 9) && lastQuestionType !== 'multiple') {
+            types.push('multiple');
+        }
 
-        // // Randomly determine which type of question to select
-        // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
-
-        setCurrentQuestionType('boolean');
+        // Randomly determine which type of question to select
+        setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
 
         // Set current question
