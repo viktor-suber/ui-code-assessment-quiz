@@ -39,10 +39,15 @@ export const Multiple: React.FC<Multiple> = (props) => {
   }, []);
 
   const onSubmit = (event: any) => {
-    if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
-      setAnswerisCorrect(true);
+
+    if (!submittedOnce) {
+      if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
+        setAnswerisCorrect(true);
+      }
+      setQuestionSubmitted(true);
+      setSubmittedOnce(true);
     }
-    setQuestionSubmitted(true);
+
     props.handleSelectedAnswer(event.answer, submittedOnce);
   };
 
