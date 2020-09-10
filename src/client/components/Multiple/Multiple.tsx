@@ -25,6 +25,13 @@ export const Multiple: React.FC<Multiple> = (props) => {
     setAnswers(props.answers);
   }, [props]);
 
+  const fixUnicode = (string: string) => {
+    return string.replace(/&quot/g, '"')
+    .replace(/no-scope&quot/g, '"')
+    .replace(/&#039/g, "'")
+    .replace(/&amp;/g, '&');
+  };
+
   const onSubmit = (event: any) => {
 
     if (!submittedOnce) {
@@ -40,7 +47,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
 
   return (
     <div className="multiple">
-      <div className="question">{question}</div>
+      <div className="question">{fixUnicode(question && question)}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
       <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
