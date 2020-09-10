@@ -20,6 +20,7 @@ export const Quiz: React.FC<Props> = (props) => {
     const [currentQuestionObject, setCurrentQuestionObject] = useState({question: '', correctAnswer: '', answers: []});
 
     const [scoreData, setScoreData] = useState({correct: 0, wrong: 0});
+    const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
         // Check to see if limit for each type of question is met
@@ -105,14 +106,18 @@ export const Quiz: React.FC<Props> = (props) => {
     
     return (
     <div className="questions">
-        {/* {currentQuestionType === 'boolean' && 
+        {currentQuestionType === 'boolean' && 
         <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
         <TextQuestion question={currentQuestionObject.question} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
-        <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer}/>} */}
-        <Summary scoreData={scoreData} />
-        <button className="button">Restart Quiz</button>
+        <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer}/>}
+        {quizEnd && 
+        <div>
+          <Summary scoreData={scoreData} />
+          <button className="button">Restart Quiz</button>
+        </div>        
+        }
     </div>
     );
 
