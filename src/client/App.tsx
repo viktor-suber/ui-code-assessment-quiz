@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './styles/styles.css';
+import './styles/styles.scss';
 import { Quiz } from './modules/Quiz';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
