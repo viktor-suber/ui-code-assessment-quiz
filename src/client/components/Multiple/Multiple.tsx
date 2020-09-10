@@ -28,15 +28,15 @@ export const Multiple: React.FC<Multiple> = (props) => {
 
   useEffect(() => {
     console.log('PROPS', props);
-    // setQuestion(props.question);
-    // setCorrectAnswer(props.correctAnswer);
-    // setAnswers(props.answers);
+    setQuestion(props.question);
+    setCorrectAnswer(props.correctAnswer);
+    setAnswers(props.answers);
 
-    setQuestion(tempQuestion);
-    setCorrectAnswer(tempCorrectAnswer);
-    setAnswers(tempAnswers);
+    // setQuestion(tempQuestion);
+    // setCorrectAnswer(tempCorrectAnswer);
+    // setAnswers(tempAnswers);
 
-  }, []);
+  }, [props]);
 
   const onSubmit = (event: any) => {
 
@@ -58,7 +58,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
       <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
         {
-          answers.map((answer, index) => {
+          answers && answers.map((answer, index) => {
           return (
             <label className={`option ${correctAnswer === answer ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`} key={index}><input className="radio" type="radio" value={answer} name="answer" ref={register({ required: true })}/>{answer}</label>
           );

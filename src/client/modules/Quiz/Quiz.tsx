@@ -26,19 +26,19 @@ export const Quiz: React.FC<Props> = (props) => {
         // Check to see if limit for each type of question is met
         const types = [];
 
-        if (booleanCount < 2) {
-            types.push('boolean')
-        }
-        if (textCount < 1) {
-            types.push('text');
-        } if (multipleCount < 9) {
-            types.push('multiple');
-        }
+        // if (booleanCount < 2) {
+        //     types.push('boolean')
+        // }
+        // if (textCount < 1) {
+        //     types.push('text');
+        // } if (multipleCount < 9) {
+        //     types.push('multiple');
+        // }
 
-        // Randomly determine which type of question to select
-        setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
+        // // Randomly determine which type of question to select
+        // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('text');
+        setCurrentQuestionType('multiple');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -83,10 +83,13 @@ export const Quiz: React.FC<Props> = (props) => {
         // } if (currentQuestionType === 'text') {
         //     setTextCount(textCount + 1);
         //     console.log('TEXT COUNT', textCount);
-        // }t6   
+        // } if (currentQuestionType === 'multiple') {
+        //     setMultipleCount(multipleCount + 1);
+        //     console.log('MULTIPLE COUNT', multipleCount);
+        // }
 
 
-    }, [props, booleanCount, textCount, multipleCount]);
+    }, [props, booleanCount, textCount, multipleCount, currentQuestionType]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
         if (!submittedOnce) {
@@ -101,12 +104,12 @@ export const Quiz: React.FC<Props> = (props) => {
     
             console.log('SCORE DATA', scoreData);
         } else {
-            //change to next question 
-
             //check if there are questions left
+            if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
+              setQuizEnd(true);
+            }
+            //change to next question if questions are left
 
-            //set quiz end
-            setQuizEnd(true);
         }
 
     }
