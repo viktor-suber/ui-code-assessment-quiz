@@ -2,10 +2,10 @@ html {
   background-color: #222428;
   height: 100%;
 
-background: -moz-radial-gradient(center, ellipse cover, #E5EEFF 0%, #1e70dd 42%, #222428 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover, #E5EEFF 0%,#1e70dd 42%,#222428 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center, #E5EEFF 0%,#1e70dd 42%,#222428 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', endColorstr='#222428',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+background: -moz-radial-gradient(center, ellipse cover, #E5EEFF 0%, #1e70dd 65%, #383c42 98%, #222428 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #E5EEFF 0%,#1e70dd 65%,#383c42 98%, #222428 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #E5EEFF 0%,#1e70dd 65%,#383c42 98%, #222428 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', endColorstr='#383c42',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 
   -webkit-background-size: cover;
