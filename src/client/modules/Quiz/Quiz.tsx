@@ -90,10 +90,9 @@ export const Quiz: React.FC<Props> = (props) => {
     const handleSelectedAnswer = (event: any) => {
         let newScoreData = scoreData;
 
-        (event === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
+        (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
 
         setScoreData(newScoreData);
-        
 
         const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
         console.log('ANSWER IS CORRECT', correct);

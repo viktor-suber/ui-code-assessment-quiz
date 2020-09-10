@@ -14,6 +14,7 @@ export const Boolean: React.FC<Bool> = (props) => {
   const [question, setQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
+  const [answerIsCorrect, setAnswerisCorrect] = useState(false);
 
   useEffect(() => {
     setQuestion(props.question);
@@ -24,6 +25,10 @@ export const Boolean: React.FC<Bool> = (props) => {
 
   const onSubmit = (event: any) => {
     console.log('CORRECT ANSWER', correctAnswer);
+    if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
+      setAnswerisCorrect(true);
+    }
+
     setQuestionSubmitted(true);
     props.handleSelectedAnswer(event.answer);
   };
@@ -31,6 +36,7 @@ export const Boolean: React.FC<Bool> = (props) => {
   return (
     <div className="boolean">
       <div className="question">{question}</div>
+  {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && 'CORRECT'} {!answerIsCorrect && 'WRONG'}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
         <label className={`option ${correctAnswer === 'True' ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`}>
         <input className="radio" type="radio" value="true" name="answer" ref={register({ required: true })} />

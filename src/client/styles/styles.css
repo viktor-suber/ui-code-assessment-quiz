@@ -114,11 +114,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 .option {
   display: flex;
   flex-direction: row;
+  margin-bottom: 7px;
 }
 
 label {
   padding: 9px;
   padding-left: 0px;
+  border-radius: 5px;
 }
 
 label:hover {
@@ -138,10 +140,12 @@ label:hover {
 
 .correct.submitted {
    background-color: #daffad;
+   color: #283715;
 }
 
 .incorrect.submitted {
   background-color: #ffbbad;
+  color: #662114;
 }
 
 .summary-header {
