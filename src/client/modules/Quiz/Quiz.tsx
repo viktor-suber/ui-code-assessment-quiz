@@ -109,7 +109,7 @@ export const Quiz: React.FC<Props> = (props) => {
         {currentQuestionType === 'boolean' && 
         <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
-        <TextQuestion question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} />}
+        <TextQuestion question={currentQuestionObject.question} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
         <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} handleSelectedAnswer={handleSelectedAnswer}/>}
         {/* <Summary scoreData={scoreData} /> */}
