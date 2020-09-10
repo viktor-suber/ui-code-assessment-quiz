@@ -5,7 +5,7 @@ interface Multiple {
   question: string,
   answers: string[],
   correctAnswer: string,
-  handleSelectedAnswer: (event: any) => void;
+  handleSelectedAnswer: (event: any, selectedAnswer: boolean) => void;
 }
 
 export const Multiple: React.FC<Multiple> = (props) => {
@@ -15,6 +15,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
   const [answers, setAnswers] = useState(['']);
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
   const [answerIsCorrect, setAnswerisCorrect] = useState(false);
+  const [submittedOnce, setSubmittedOnce] = useState(false);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -38,11 +39,16 @@ export const Multiple: React.FC<Multiple> = (props) => {
   }, []);
 
   const onSubmit = (event: any) => {
-    if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
-      setAnswerisCorrect(true);
+
+    if (!submittedOnce) {
+      if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
+        setAnswerisCorrect(true);
+      }
+      setQuestionSubmitted(true);
+      setSubmittedOnce(true);
     }
-    setQuestionSubmitted(true);
-    props.handleSelectedAnswer(event.answer);
+
+    props.handleSelectedAnswer(event.answer, submittedOnce);
   };
 
   return (

@@ -20,6 +20,7 @@ export const Quiz: React.FC<Props> = (props) => {
     const [currentQuestionObject, setCurrentQuestionObject] = useState({question: '', correctAnswer: '', answers: []});
 
     const [scoreData, setScoreData] = useState({correct: 0, wrong: 0});
+    const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
         // Check to see if limit for each type of question is met
@@ -37,7 +38,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // Randomly determine which type of question to select
         setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('multiple');
+        // setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -87,32 +88,48 @@ export const Quiz: React.FC<Props> = (props) => {
 
     }, [props, booleanCount, textCount, multipleCount]);
 
-    const handleSelectedAnswer = (event: any) => {
-        let newScoreData = scoreData;
+    const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
+        if (!submittedOnce) {
+            let newScoreData = scoreData;
 
-        (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
+            (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
+    
+            setScoreData(newScoreData);
+    
+            const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
+            console.log('ANSWER IS CORRECT', correct);
+    
+            console.log('SCORE DATA', scoreData);
+        } else {
+            //change to next question or
+            setQuizEnd(true);
+        }
 
-        setScoreData(newScoreData);
+    }
 
-        const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
-        console.log('ANSWER IS CORRECT', correct);
-
-        console.log('SCORE DATA', scoreData);
-
-        // Change to next question
-
+    const restartQuiz = () => {
+        window.location.reload(true);
     }
     
     return (
     <div className="questions">
-        {/* {JSON.stringify(currentQuestionObject.question)} */}
+        {!quizEnd && 
+        <div>
         {currentQuestionType === 'boolean' && 
         <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
         <TextQuestion question={currentQuestionObject.question} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
         <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer}/>}
-        {/* <Summary scoreData={scoreData} /> */}
+
+        </div>}
+
+        {quizEnd && 
+        <div>
+          <Summary scoreData={scoreData} />
+          <button className="button" onClick={restartQuiz}>Restart Quiz</button>
+        </div>        
+        }
     </div>
     );
 
