@@ -38,7 +38,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // Randomly determine which type of question to select
         setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        // setCurrentQuestionType('multiple');
+        // setCurrentQuestionType('text');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -106,6 +106,10 @@ export const Quiz: React.FC<Props> = (props) => {
         }
 
     }
+
+    const restartQuiz = () => {
+        window.location.reload(true);
+    }
     
     return (
     <div className="questions">
@@ -123,7 +127,7 @@ export const Quiz: React.FC<Props> = (props) => {
         {quizEnd && 
         <div>
           <Summary scoreData={scoreData} />
-          <button className="button">Restart Quiz</button>
+          <button className="button" onClick={restartQuiz}>Restart Quiz</button>
         </div>        
         }
     </div>
