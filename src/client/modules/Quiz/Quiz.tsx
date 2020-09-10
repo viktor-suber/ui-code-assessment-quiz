@@ -18,27 +18,28 @@ export const Quiz: React.FC<Props> = (props) => {
     const [multipleCount, setMultipleCount] = useState(0);
 
     const [currentQuestionObject, setCurrentQuestionObject] = useState({question: '', correctAnswer: '', answers: []});
+    const [lastQuestionType, setLastQuestionType] = useState('');
 
     const [scoreData, setScoreData] = useState({correct: 0, wrong: 0});
     const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
-        // // Check to see if limit for each type of question is met
-        // const types = [];
+        // Check to see if limit for each type of question is met
+        const types = [];
 
-        // if (booleanCount < 2) {
-        //     types.push('boolean')
-        // }
-        // if (textCount > 1) {
-        //     types.push('text');
-        // } if (multipleCount > 9) {
-        //     types.push('multiple');
-        // }
+        if ((booleanCount < 2) && lastQuestionType !== 'boolean') {
+            types.push('boolean');
+        }
+        if ((textCount < 1) && lastQuestionType !== 'text') {
+            types.push('text');
+        } if ((multipleCount < 9) && lastQuestionType !== 'multiple') {
+            types.push('multiple');
+        }
 
-        // // Randomly determine which type of question to select
-        // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
+        // Randomly determine which type of question to select
+        setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
-        setCurrentQuestionType('text');
+        // setCurrentQuestionType('multiple');
 
         // Set current question
         if (currentQuestionType === 'boolean') {
@@ -75,18 +76,7 @@ export const Quiz: React.FC<Props> = (props) => {
 
         }
 
-        // Update question type counter
-
-        // if (currentQuestionType === 'boolean') {
-        //     setBooleanCount(booleanCount + 1);
-        //     console.log('BOOL COUNT', booleanCount);
-        // } if (currentQuestionType === 'text') {
-        //     setTextCount(textCount + 1);
-        //     console.log('TEXT COUNT', textCount);
-        // }t6   
-
-
-    }, [props, booleanCount, textCount, multipleCount]);
+    }, [props, booleanCount, textCount, multipleCount, currentQuestionType, lastQuestionType]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
         if (!submittedOnce) {
@@ -96,13 +86,35 @@ export const Quiz: React.FC<Props> = (props) => {
     
             setScoreData(newScoreData);
     
-            const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
-            console.log('ANSWER IS CORRECT', correct);
+            // const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
+            // console.log('ANSWER IS CORRECT', correct);
     
-            console.log('SCORE DATA', scoreData);
+            // console.log('SCORE DATA', scoreData);
         } else {
-            //change to next question or
-            setQuizEnd(true);
+            // add to count
+            
+            switch(currentQuestionType) {
+              case 'boolean':
+              setBooleanCount(booleanCount + 1);
+              console.log('BOOL COUNT', booleanCount);
+              break;
+              case 'text': 
+              setTextCount(textCount + 1);
+              console.log('TEXT COUNT', textCount);
+              break;
+              case 'multiple':
+              setMultipleCount(multipleCount + 1);
+              console.log('MULTIPLE COUNT', multipleCount);
+            }
+
+            setLastQuestionType(currentQuestionType);
+
+            //check if there are questions left
+            if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
+              setQuizEnd(true);
+            }
+            //change to next question if questions are left
+
         }
 
     }
