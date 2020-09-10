@@ -3,9 +3,9 @@ import { Multiple } from '../common/components/Multiple';
 import { Boolean } from '../common/components/Boolean';
 import { TextQuestion } from '../common/components/TextQuestion';
 import { Summary } from '../common/components/Summary';
-import { Props } from '../common/interfaces/propsInterface';
+import { PropsInterface } from '../common/interfaces';
 
-export const Quiz: React.FC<Props> = (props) => {
+export const Quiz: React.FC<PropsInterface> = (props) => {
 
     const [currentQuestionType, setCurrentQuestionType] = useState('');
     const [booleanCount, setBooleanCount] = useState(0);

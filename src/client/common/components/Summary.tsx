@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { SummaryInterface } from '../interfaces';
 
-interface Summary {
-  scoreData: {
-    correct: number;
-    wrong: number;
-  }
-}
-
-export const Summary: React.FC<Summary> = (props: any) => {
+export const Summary: React.FC<SummaryInterface> = (props: any) => {
 
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);

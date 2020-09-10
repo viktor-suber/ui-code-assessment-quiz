@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Multi } from '../interfaces/multipleInterface';
 import { fixUnicode } from '../methods/fixUnicode';
+import { MultipleInterface } from '../interfaces';
 
-export const Multiple: React.FC<Multi> = (props) => {
+export const Multiple: React.FC<MultipleInterface> = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
 

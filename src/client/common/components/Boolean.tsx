@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Bool } from '../interfaces/boolInterface';
 import { fixUnicode } from '../methods/fixUnicode';
+import { BooleanInterface } from '../interfaces';
 
-export const Boolean: React.FC<Bool> = (props) => {
+export const Boolean: React.FC<BooleanInterface> = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
 
