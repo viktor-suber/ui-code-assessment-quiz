@@ -19,8 +19,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   align-items: center;
 }
 
-
-
 .container {
   display: flex;
   flex-direction: column;
