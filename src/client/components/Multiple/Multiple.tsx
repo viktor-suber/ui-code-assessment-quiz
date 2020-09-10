@@ -20,15 +20,20 @@ export const Multiple: React.FC<Multiple> = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   useEffect(() => {
-    setQuestion(props.question);
+    const newQuestion = fixUnicode(props.question);
+    setQuestion(newQuestion);
     setCorrectAnswer(props.correctAnswer);
     setAnswers(props.answers);
   }, [props]);
 
-  const fixUnicode = (string: string) => {
-    return string.replace(/&quot/g, '"')
-    .replace(/no-scope&quot/g, '"')
-    .replace(/&#039/g, "'")
+
+  const fixUnicode = (string: any) => {
+    if (!string) {
+      return null;
+    }
+    return string.replace(/&quot;/g, '"')
+    .replace(/no-scope&quot;/g, '"')
+    .replace(/&#039;/g, "'")
     .replace(/&amp;/g, '&');
   };
 
@@ -47,7 +52,7 @@ export const Multiple: React.FC<Multiple> = (props) => {
 
   return (
     <div className="multiple">
-      <div className="question">{fixUnicode(question && question)}</div>
+      <div className="question">{question}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
       <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>

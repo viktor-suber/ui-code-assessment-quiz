@@ -18,14 +18,18 @@ export const Boolean: React.FC<Bool> = (props) => {
   const [submittedOnce, setSubmittedOnce] = useState(false);
 
   useEffect(() => {
-    setQuestion(props.question);
+    const newQuestion = fixUnicode(props.question);
+    setQuestion(newQuestion);
     setCorrectAnswer(props.correctAnswer);
   }, [props]);
 
-  const fixUnicode = (string: string) => {
-    return string.replace(/&quot/g, '"')
-    .replace(/no-scope&quot/g, '"')
-    .replace(/&#039/g, "'")
+  const fixUnicode = (string: any) => {
+    if (!string) {
+      return null;
+    }
+    return string.replace(/&quot;/g, '"')
+    .replace(/no-scope&quot;/g, '"')
+    .replace(/&#039;/g, "'")
     .replace(/&amp;/g, '&');
   };
 
