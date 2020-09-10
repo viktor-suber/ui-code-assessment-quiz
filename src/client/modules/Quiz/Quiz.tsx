@@ -110,7 +110,7 @@ export const Quiz: React.FC<Props> = (props) => {
             setLastQuestionType(currentQuestionType);
 
             //check if there are questions left
-            if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
+            if (booleanCount === 2 && textCount === 1) {
               setQuizEnd(true);
             }
             //change to next question if questions are left
