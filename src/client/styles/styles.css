@@ -130,18 +130,18 @@ label:hover {
 }
 
 .error {
-  color: #ff0000;
+  color: #ff2600;
   font-size: 14px;
   padding: 9px;
   padding-left: 0px;
 }
 
 .correct.submitted {
-   background-color: #00ff00;
+   background-color: #daffad;
 }
 
 .incorrect.submitted {
-  background-color: #FF0000;
+  background-color: #ffbbad;
 }
 
 .summary-header {
