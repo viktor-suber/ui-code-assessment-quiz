@@ -27,6 +27,5 @@ export interface SummaryInterface {
   scoreData: {
     correct: number;
     wrong: number;
-  }
+  };
 }
-
