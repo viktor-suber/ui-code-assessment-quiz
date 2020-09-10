@@ -84,30 +84,28 @@ export const Quiz: React.FC<Props> = (props) => {
             (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
     
             setScoreData(newScoreData);
-
+    
+            // const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
+            // console.log('ANSWER IS CORRECT', correct);
+    
+            // console.log('SCORE DATA', scoreData);
+        } else {
             // add to count
+            
             switch(currentQuestionType) {
-            case 'boolean':
+              case 'boolean':
               setBooleanCount(booleanCount + 1);
               console.log('BOOL COUNT', booleanCount);
-            break;
-            case 'text': 
+              break;
+              case 'text': 
               setTextCount(textCount + 1);
               console.log('TEXT COUNT', textCount);
-            break;
-            case 'multiple':
+              break;
+              case 'multiple':
               setMultipleCount(multipleCount + 1);
               console.log('MULTIPLE COUNT', multipleCount);
             }
 
-            setBooleanCount(booleanCount + 1);
-            console.log('BOOL COUNT', booleanCount);
-    
-            const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
-            console.log('ANSWER IS CORRECT', correct);
-    
-            console.log('SCORE DATA', scoreData);
-        } else {
             //check if there are questions left
             if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
               setQuizEnd(true);
