@@ -108,7 +108,7 @@ export const Quiz: React.FC<Props> = (props) => {
     <div className="questions">
         {/* {JSON.stringify(currentQuestionObject.question)} */}
         {currentQuestionType === 'boolean' && 
-        <Boolean question={currentQuestionObject.question}handleSelectedAnswer={handleSelectedAnswer} />}
+        <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
         <TextQuestion question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
