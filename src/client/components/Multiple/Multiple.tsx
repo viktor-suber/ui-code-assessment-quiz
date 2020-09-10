@@ -22,8 +22,15 @@ export const Multiple: React.FC<Multiple> = (props) => {
   useEffect(() => {
     const newQuestion = fixUnicode(props.question);
     setQuestion(newQuestion);
-    setCorrectAnswer(props.correctAnswer);
-    setAnswers(props.answers);
+    const newCorrectAnswer = fixUnicode(props.correctAnswer);
+    setCorrectAnswer(newCorrectAnswer);
+    const newAnswers: string[] = [];
+    if (props.answers) {
+      props.answers.forEach(answer => {
+        newAnswers.push(fixUnicode(answer));
+      });
+    }
+    setAnswers(newAnswers);
   }, [props]);
 
 
