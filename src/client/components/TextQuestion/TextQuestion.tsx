@@ -24,7 +24,7 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
     <div className="text">
       <div className="question">{question}</div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+        <label className="no-hover">
           <input type="text" name="answer" ref={register({required: true})}/>
         </label>
         <div className="error">

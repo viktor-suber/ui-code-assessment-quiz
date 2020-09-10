@@ -127,6 +127,10 @@ label:hover {
   background-color: #E5EEFF;
 }
 
+.no-hover:hover {
+  background-color: #FFFFFF;
+}
+
 .radio {
   margin-right: 10px;
 }
