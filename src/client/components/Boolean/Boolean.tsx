@@ -27,15 +27,14 @@ export const Boolean: React.FC<Bool> = (props) => {
   const onSubmit = (event: any) => {
 
     if (!submittedOnce) {
-      setSubmittedOnce(true);
       if (correctAnswer.toLowerCase() === event.answer.toLowerCase()) {
         setAnswerisCorrect(true);
       }
       setQuestionSubmitted(true);
-      props.handleSelectedAnswer(event.answer, submittedOnce);
-    } else {
-
+      setSubmittedOnce(true);
     }
+
+    props.handleSelectedAnswer(event.answer, submittedOnce);
   };
 
   return (

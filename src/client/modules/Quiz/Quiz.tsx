@@ -89,20 +89,21 @@ export const Quiz: React.FC<Props> = (props) => {
     }, [props, booleanCount, textCount, multipleCount]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
-        let newScoreData = scoreData;
+        if (!submittedOnce) {
+            let newScoreData = scoreData;
 
-        (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
-
-        setScoreData(newScoreData);
-
-        const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
-        console.log('ANSWER IS CORRECT', correct);
-
-        console.log('SCORE DATA', scoreData);
-
-        // Change to next question
-
-        setQuizEnd(true);
+            (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
+    
+            setScoreData(newScoreData);
+    
+            const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
+            console.log('ANSWER IS CORRECT', correct);
+    
+            console.log('SCORE DATA', scoreData);
+        } else {
+            //change to next question or
+            setQuizEnd(true);
+        }
 
     }
     
