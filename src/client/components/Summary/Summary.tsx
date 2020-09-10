@@ -21,8 +21,8 @@ export const Summary: React.FC<Summary> = (props: any) => {
 
   useEffect(() => {
     setQuestionsAnswered(correct + wrong);
-    setFinalScore(Math.round(correct / (correct + wrong)) * 100);
-  }, [correct, wrong]);
+    setFinalScore(Math.round((correct / (correct + wrong)) * 100));
+  }, [props, correct, wrong]);
 
   return (
     <div className="summary">
