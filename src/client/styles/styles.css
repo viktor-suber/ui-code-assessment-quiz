@@ -54,11 +54,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 }
 
 .header {
-  font-size: 45px;
-  /* width: 75%; */
+  font-size: 50px;
   padding: 20px;
   padding-top: 0px;
-
   font-weight: bold;
   text-shadow: 3px 3px #222428;
 }
