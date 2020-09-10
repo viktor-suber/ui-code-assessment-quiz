@@ -87,12 +87,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
   padding: 10px;
   border: 0px;
   width: 25%;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.45s ease, color 0.45s ease;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: #222428;
+  background-color: #cfd7e6;
+  color: #4e545c;
+}
+
+.button:active {
+  background-color: #383c42;
+  color: #cfd7e6;
 }
 
 .button-text {
