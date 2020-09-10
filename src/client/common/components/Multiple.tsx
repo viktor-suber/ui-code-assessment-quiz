@@ -1,37 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { fixUnicode } from '../methods/fixUnicode';
+import { MultipleInterface } from '../interfaces';
 
-interface Bool {
-  question: string;
-  correctAnswer: string;
-  handleSelectedAnswer: (event: any, selectedAnswer: boolean) => void;
-}
-
-export const Boolean: React.FC<Bool> = (props) => {
+export const Multiple: React.FC<MultipleInterface> = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
 
   const [question, setQuestion] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
+  const [answers, setAnswers] = useState(['']);
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
   const [answerIsCorrect, setAnswerisCorrect] = useState(false);
   const [submittedOnce, setSubmittedOnce] = useState(false);
 
   useEffect(() => {
-    const newQuestion = fixUnicode(props.question);
-    setQuestion(newQuestion);
-    setCorrectAnswer(props.correctAnswer);
+    setQuestion(fixUnicode(props.question));
+    setCorrectAnswer(fixUnicode(props.correctAnswer));
+    const newAnswers: string[] = [];
+    if (props.answers) {
+      props.answers.forEach(answer => {
+        newAnswers.push(fixUnicode(answer));
+      });
+    }
+    setAnswers(newAnswers);
   }, [props]);
 
-  const fixUnicode = (string: any) => {
-    if (!string) {
-      return null;
-    }
-    return string.replace(/&quot;/g, '"')
-    .replace(/no-scope&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&amp;/g, '&');
-  };
 
   const onSubmit = (event: any) => {
 
@@ -47,18 +41,18 @@ export const Boolean: React.FC<Bool> = (props) => {
   };
 
   return (
-    <div className="boolean">
-      <div className="question">{fixUnicode(question && question)}</div>
+    <div className="multiple">
+      <div className="question">{question}</div>
       {questionSubmitted && <div className="correct-indicator">{answerIsCorrect && <span className="correct-message">CORRECT!</span>} {!answerIsCorrect && <span><span className="incorrect-message">WRONG</span><b>Correct Answer: </b> {correctAnswer}</span>}</div>}
       <form className="question-list" onSubmit={handleSubmit(onSubmit)}>
-        <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
-        <label className={`option ${correctAnswer === 'True' ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`}>
-        <input className="radio" type="radio" value="true" name="answer" ref={register({ required: true })} />
-        True
-        </label>
-        <label className={`option ${correctAnswer === 'False' ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`}>
-        <input className="radio"  type="radio" value="false" name="answer" ref={register({ required: true })}/>
-        False</label>        
+      <div className={`answer-list ${errors.answer ? 'answer-error' : null}`}>
+        {
+          answers && answers.map((answer, index) => {
+          return (
+            <label className={`option ${correctAnswer === answer ? 'correct' : 'incorrect'} ${questionSubmitted ? 'submitted' : null}`} key={index}><input className="radio" type="radio" value={answer} name="answer" ref={register({ required: true })}/>{answer}</label>
+          );
+          })
+        }
         {errors.answer && <div className="error">ERROR: Selection is required</div>}
         </div>
         <button className="button" type="submit"><span className="button-text">Next</span></button>
