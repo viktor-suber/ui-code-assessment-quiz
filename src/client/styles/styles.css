@@ -141,6 +141,7 @@ label:hover {
 .correct-indicator {
   font-size: 12px;
   margin-bottom: 18px;
+  color: #5c5e66;
 }
 
 .correct-message {
