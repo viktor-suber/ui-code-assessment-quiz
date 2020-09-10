@@ -4,7 +4,7 @@ import { Quiz } from './modules/Quiz';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const App = () => {
+export const App: React.FC = () => {
     const [multiples, setMultiples] = useState([]);
     const [booleans, setBooleans] = useState([]);
     const [textQuestions, setTextQuestions] = useState([]);
