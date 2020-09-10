@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 interface TextQuestion {
   question: string;
   correctAnswer: string;
-  handleSelectedAnswer: (event: any) => void;
+  handleSelectedAnswer: (event: any, selectedAnswer: boolean) => void;
 }
 
 export const TextQuestion: React.FC<TextQuestion> = (props) => {
@@ -15,6 +15,7 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
   const [answerIsCorrect, setAnswerisCorrect] = useState(false);
+  const [submittedOnce, setSubmittedOnce] = useState(false);
 
   useEffect(() => {
     setQuestion(props.question);
@@ -26,7 +27,7 @@ export const TextQuestion: React.FC<TextQuestion> = (props) => {
       setAnswerisCorrect(true);
     }
     setQuestionSubmitted(true);
-    props.handleSelectedAnswer(event.answer);
+    props.handleSelectedAnswer(event.answer, submittedOnce);
   };
 
   return (

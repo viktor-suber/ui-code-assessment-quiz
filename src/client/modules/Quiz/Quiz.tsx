@@ -88,7 +88,7 @@ export const Quiz: React.FC<Props> = (props) => {
 
     }, [props, booleanCount, textCount, multipleCount]);
 
-    const handleSelectedAnswer = (event: any) => {
+    const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
         let newScoreData = scoreData;
 
         (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
@@ -102,16 +102,23 @@ export const Quiz: React.FC<Props> = (props) => {
 
         // Change to next question
 
+        setQuizEnd(true);
+
     }
     
     return (
     <div className="questions">
+        {!quizEnd && 
+        <div>
         {currentQuestionType === 'boolean' && 
         <Boolean question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} correctAnswer={currentQuestionObject.correctAnswer}/>}
         {currentQuestionType === 'text' && 
         <TextQuestion question={currentQuestionObject.question} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
         <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} correctAnswer={currentQuestionObject.correctAnswer} handleSelectedAnswer={handleSelectedAnswer}/>}
+
+        </div>}
+
         {quizEnd && 
         <div>
           <Summary scoreData={scoreData} />
