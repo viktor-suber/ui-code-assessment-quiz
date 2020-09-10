@@ -136,6 +136,14 @@ label:hover {
   padding-left: 0px;
 }
 
+.correct.submitted {
+   background-color: #00ff00;
+}
+
+.incorrect.submitted {
+  background-color: #FF0000;
+}
+
 .summary-header {
   font-weight: bold;
   font-size: 20px;
