@@ -30,7 +30,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // }
         // if (textCount > 1) {
         //     types.push('text');
-        // } if (textCount > 9) {
+        // } if (multipleCount > 9) {
         //     types.push('multiple');
         // }
 
@@ -38,7 +38,7 @@ export const Quiz: React.FC<Props> = (props) => {
         // setCurrentQuestionType(types[Math.floor(Math.random() * types.length)]);
 
         setCurrentQuestionType('multiple');
-
+        
         // Set current question
         if (currentQuestionType === 'boolean') {
 
@@ -105,7 +105,7 @@ export const Quiz: React.FC<Props> = (props) => {
     }
     
     return (
-    <div>
+    <div className="questions">
         {/* {JSON.stringify(currentQuestionObject.question)} */}
         {currentQuestionType === 'boolean' && 
         <Boolean question={currentQuestionObject.question}handleSelectedAnswer={handleSelectedAnswer} />}
@@ -113,7 +113,7 @@ export const Quiz: React.FC<Props> = (props) => {
         <TextQuestion question={currentQuestionObject.question} handleSelectedAnswer={handleSelectedAnswer} />}
         {currentQuestionType === 'multiple' &&
         <Multiple question={currentQuestionObject && currentQuestionObject.question} answers={currentQuestionObject.answers} handleSelectedAnswer={handleSelectedAnswer}/>}
-        <Summary scoreData={scoreData} />
+        {/* <Summary scoreData={scoreData} /> */}
     </div>
     );
 
