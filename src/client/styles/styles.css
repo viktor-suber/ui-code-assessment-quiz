@@ -90,8 +90,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 
 .button:hover {
   cursor: pointer;
-  background-color: #cfd7e6;
-  color: #4e545c;
+  background-color: #57a0ff;
 }
 
 .button:active {
