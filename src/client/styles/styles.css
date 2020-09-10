@@ -103,6 +103,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e70dd', end
 .question {
   font-size: 20px;
   margin-bottom: 18px;
+  text-align: justify;
 }
 
 .question-list {
@@ -144,6 +145,7 @@ label:hover {
 }
 
 .text-input {
+  width: 200px;
   height: 20px;
 }
 

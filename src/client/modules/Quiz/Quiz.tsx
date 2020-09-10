@@ -75,20 +75,6 @@ export const Quiz: React.FC<Props> = (props) => {
 
         }
 
-        // Update question type counter
-
-        // if (currentQuestionType === 'boolean') {
-        //     setBooleanCount(booleanCount + 1);
-        //     console.log('BOOL COUNT', booleanCount);
-        // } if (currentQuestionType === 'text') {
-        //     setTextCount(textCount + 1);
-        //     console.log('TEXT COUNT', textCount);
-        // } if (currentQuestionType === 'multiple') {
-        //     setMultipleCount(multipleCount + 1);
-        //     console.log('MULTIPLE COUNT', multipleCount);
-        // }
-
-
     }, [props, booleanCount, textCount, multipleCount, currentQuestionType]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
@@ -98,6 +84,24 @@ export const Quiz: React.FC<Props> = (props) => {
             (event.toLowerCase() === currentQuestionObject.correctAnswer.toLowerCase()) ? newScoreData.correct++ : newScoreData.wrong++;
     
             setScoreData(newScoreData);
+
+            // add to count
+            switch(currentQuestionType) {
+            case 'boolean':
+              setBooleanCount(booleanCount + 1);
+              console.log('BOOL COUNT', booleanCount);
+            break;
+            case 'text': 
+              setTextCount(textCount + 1);
+              console.log('TEXT COUNT', textCount);
+            break;
+            case 'multiple':
+              setMultipleCount(multipleCount + 1);
+              console.log('MULTIPLE COUNT', multipleCount);
+            }
+
+            setBooleanCount(booleanCount + 1);
+            console.log('BOOL COUNT', booleanCount);
     
             const correct = (event === currentQuestionObject.correctAnswer.toLowerCase()) ? true : false;
             console.log('ANSWER IS CORRECT', correct);
