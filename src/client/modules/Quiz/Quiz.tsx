@@ -24,17 +24,21 @@ export const Quiz: React.FC<Props> = (props) => {
     const [quizEnd, setQuizEnd] = useState(false);
 
     useEffect(() => {
-        console.log('LAST QUESTION TYPE', lastQuestionType);
         // Check to see if limit for each type of question is met
         const types = [];
 
-        if (booleanCount < 1) {
-            types.push('boolean')
+        console.log('LAST QUESTION TYPE', lastQuestionType);
+
+        if ((booleanCount < 200) && lastQuestionType !== 'boolean') {
+            console.log('PASSED BOOLEAN', lastQuestionType);
+            types.push('boolean');
         }
-        if (textCount < 1) {
+        if ((textCount < 100) && lastQuestionType !== 'text') {
             types.push('text');
-        } if (multipleCount < 1) {
+            console.log('PASSED TEXT', lastQuestionType);
+        } if ((multipleCount < 900) && lastQuestionType !== 'multiple') {
             types.push('multiple');
+            console.log('PASSED multiple', lastQuestionType);
         }
 
         // Randomly determine which type of question to select
@@ -77,7 +81,7 @@ export const Quiz: React.FC<Props> = (props) => {
 
         }
 
-    }, [props, booleanCount, textCount, multipleCount, currentQuestionType]);
+    }, [props, booleanCount, textCount, multipleCount, currentQuestionType, lastQuestionType]);
 
     const handleSelectedAnswer = (event: any, submittedOnce: boolean) => {
         if (!submittedOnce) {
@@ -108,7 +112,9 @@ export const Quiz: React.FC<Props> = (props) => {
               console.log('MULTIPLE COUNT', multipleCount);
             }
 
+            console.log('CURRENT QUESTION TYPE 114', currentQuestionType);
             setLastQuestionType(currentQuestionType);
+            console.log('LAST QUESTION TYPE 117', lastQuestionType);
 
             //check if there are questions left
             if (booleanCount === 2 && textCount === 1 && multipleCount === 9) {
