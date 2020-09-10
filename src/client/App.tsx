@@ -29,14 +29,12 @@ export const App: React.FC = () => {
     }, []);
 
     return ( 
-    <div className="container">
-      <div className="quiz-container">
+      <div className="container">
       <div className="header">Quiz App</div>
       <div className="quiz">
         <Quiz multiple={multiples} bool={booleans} text={textQuestions}/>
       </div>
       </div>
-    </div>
 
     );
 };

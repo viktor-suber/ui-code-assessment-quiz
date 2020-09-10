@@ -21,26 +21,20 @@ html {
   align-items: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 @media only screen and (max-width: 600px) {
-  .quiz-container {
+  .container {
     width: 308px;
   }
 }
 
 @media only screen and (min-width: 600px) {
-  .quiz-container {
+  .container {
     width: 408px;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .quiz-container {
+  .container {
     width: 576px;
   }
 }
@@ -49,12 +43,12 @@ html {
   .button {
     width: 25%;
   }
-  .quiz-container {
+  .container {
     width: 800px;
   }
 }
 
-.quiz-container {
+.container {
   margin-top: -5%;
 }
 
