@@ -33,7 +33,7 @@ export const Boolean: React.FC<Bool> = (props) => {
         <input className="radio" type="radio" value="true" name="answer" ref={register({ required: true })} />
         True
         </label>
-        <label className="option">
+        <label className={`option ${correctAnswer === 'true' ? 'correct' : 'incorrect'}`}>
         <input className="radio"  type="radio" value="false" name="answer" ref={register({ required: true })}/>
         False</label>
         <div className="error">
